@@ -16,14 +16,14 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "ZClassic"
-            VALUE "FileDescription",    "zclassic-tx (CLI ZClassic transaction editor utility)"
+            VALUE "CompanyName",        "Bazcoin"
+            VALUE "FileDescription",    "bazcoin-tx (CLI Bazcoin transaction editor utility)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
-            VALUE "InternalName",       "zclassic-tx"
+            VALUE "InternalName",       "bazcoin-tx"
             VALUE "LegalCopyright",     COPYRIGHT_STR
             VALUE "LegalTrademarks1",   "Distributed under the MIT software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
-            VALUE "OriginalFilename",   "zclassic-tx.exe"
-            VALUE "ProductName",        "zclassic-tx"
+            VALUE "OriginalFilename",   "bazcoin-tx.exe"
+            VALUE "ProductName",        "bazcoin-tx"
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END
     END
