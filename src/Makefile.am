@@ -92,11 +92,11 @@ noinst_PROGRAMS =
 TESTS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += zclassicd
+  bin_PROGRAMS += bazcoind
 endif
 
 if BUILD_BITCOIN_UTILS
-  bin_PROGRAMS += zclassic-cli zclassic-tx
+  bin_PROGRAMS += bazcoin-cli bazcoin-tx
 endif
 
 LIBZCASH_H = \
@@ -235,7 +235,7 @@ obj/build.h: FORCE
 	  $(abs_top_srcdir)
 libbitcoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: zclassicd
+# server: bazcoind
 libbitcoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
 libbitcoin_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_server_a_SOURCES = \
@@ -297,7 +297,7 @@ libbitcoin_proton_a_SOURCES = \
   amqp/amqppublishnotifier.cpp
 endif
 
-# wallet: zclassicd, but only linked when wallet enabled
+# wallet: bazcoind, but only linked when wallet enabled
 libbitcoin_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_wallet_a_SOURCES = \
@@ -354,7 +354,7 @@ crypto_libbitcoin_crypto_a_SOURCES += \
   ${EQUIHASH_TROMP_SOURCES}
 endif
 
-# common: shared between zclassicd and non-server tools
+# common: shared between bazcoind and non-server tools
 libbitcoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_common_a_SOURCES = \
@@ -415,7 +415,7 @@ if GLIBC_BACK_COMPAT
 libbitcoin_util_a_SOURCES += compat/glibc_compat.cpp
 endif
 
-# cli: zclassic-cli
+# cli: bazcoin-cli
 libbitcoin_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_cli_a_SOURCES = \
@@ -427,16 +427,16 @@ nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
 # bitcoind binary #
-zclassicd_SOURCES = bitcoind.cpp
-zclassicd_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-zclassicd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-zclassicd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+bazcoind_SOURCES = bitcoind.cpp
+bazcoind_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+bazcoind_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+bazcoind_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-zclassicd_SOURCES += bitcoind-res.rc
+bazcoind_SOURCES += bitcoind-res.rc
 endif
 
-zclassicd_LDADD = \
+bazcoind_LDADD = \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_WALLET) \
   $(LIBBITCOIN_COMMON) \
@@ -451,7 +451,7 @@ zclassicd_LDADD = \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
-zclassicd_LDADD += \
+bazcoind_LDADD += \
   $(BOOST_LIBS) \
   $(BDB_LIBS) \
   $(SSL_LIBS) \
@@ -464,13 +464,13 @@ zclassicd_LDADD += \
   $(LIBZCASH_LIBS)
 
 # bitcoin-cli binary #
-zclassic_cli_SOURCES = bitcoin-cli.cpp
-zclassic_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
-zclassic_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-zclassic_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+bazcoin_cli_SOURCES = bitcoin-cli.cpp
+bazcoin_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
+bazcoin_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+bazcoin_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-zclassic_cli_SOURCES += bitcoin-cli-res.rc
+bazcoin_cli_SOURCES += bitcoin-cli-res.rc
 endif
 
 zclassic_cli_LDADD = \
@@ -487,18 +487,18 @@ zclassic_cli_LDADD = \
   $(LIBZCASH_LIBS)
 #
 
-# zclassic-tx binary #
-zclassic_tx_SOURCES = bitcoin-tx.cpp
-zclassic_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-zclassic_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-zclassic_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# bazcoin-tx binary #
+bazcoin_tx_SOURCES = bitcoin-tx.cpp
+bazcoin_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+bazcoin_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+bazcoin_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-zclassic_tx_SOURCES += bitcoin-tx-res.rc
+bazcoin_tx_SOURCES += bitcoin-tx-res.rc
 endif
 
-# FIXME: Is libzcash needed for zclassic_tx?
-zclassic_tx_LDADD = \
+# FIXME: Is libzcash needed for bazcoin_tx?
+bazcoin_tx_LDADD = \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UTIL) \
@@ -508,10 +508,10 @@ zclassic_tx_LDADD = \
   $(LIBBITCOIN_CRYPTO) \
   $(LIBZCASH_LIBS)
 
-zclassic_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+bazcoin_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
-# zclassic protocol primitives #
+# bazcoin protocol primitives #
 libzcash_a_SOURCES = \
   zcash/IncrementalMerkleTree.cpp \
   zcash/NoteEncryption.cpp \
