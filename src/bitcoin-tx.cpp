@@ -48,10 +48,10 @@ static int AppInitRawTx(int argc, char* argv[])
     if (argc<2 || mapArgs.count("-?") || mapArgs.count("-h") || mapArgs.count("-help"))
     {
         // First part of help message is specific to this utility
-        std::string strUsage = _("ZClassic zclassic-tx utility version") + " " + FormatFullVersion() + "\n\n" +
+        std::string strUsage = _("Bazcoin bazcoin-tx utility version") + " " + FormatFullVersion() + "\n\n" +
             _("Usage:") + "\n" +
-              "  zclassic-tx [options] <hex-tx> [commands]  " + _("Update hex-encoded zclassic transaction") + "\n" +
-              "  zclassic-tx [options] -create [commands]   " + _("Create hex-encoded zclassic transaction") + "\n" +
+              "  bazcoin-tx [options] <hex-tx> [commands]  " + _("Update hex-encoded bazcoin transaction") + "\n" +
+              "  bazcoin-tx [options] -create [commands]   " + _("Create hex-encoded bazcoin transaction") + "\n" +
               "\n";
 
         fprintf(stdout, "%s", strUsage.c_str());
