@@ -115,7 +115,7 @@ public:
          */
         pchMessageStart[0] = 0x14;
         pchMessageStart[1] = 0x80;
-        pchMessageStart[2] = 0x32;
+        pchMessageStart[2] = 0x52;
         pchMessageStart[3] = 0x69;
         vAlertPubKey = ParseHex("04a60129fc1915c0e35d92328cbc27cba5dc367dd0eaf7059616aa455afc3f7622161572e1197af352baff0d6563bb75316d095241dd94f809d7f6eefb49dbdff4");
         nDefaultPort = 6489;
@@ -276,10 +276,10 @@ public:
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00");
 
-        pchMessageStart[0] = 0xfa;
-        pchMessageStart[1] = 0x1a;
-        pchMessageStart[2] = 0xf9;
-        pchMessageStart[3] = 0xbf;
+        pchMessageStart[0] = 0xfb;
+        pchMessageStart[1] = 0x1c;
+        pchMessageStart[2] = 0x79;
+        pchMessageStart[3] = 0xef;
         vAlertPubKey = ParseHex("044d71d7faa4e6d77c08d3a1e8c27fafc922de9ec8c91e809bb0c4788058301ec18a68d9fe42b6ec0467bb7ca7f7ecaecbc05c0b6437d9de21a59232fd917a8803");
         nDefaultPort = 16489;
         nPruneAfterHeight = 1000;
@@ -399,10 +399,10 @@ public:
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00");
 
-        pchMessageStart[0] = 0xaa;
-        pchMessageStart[1] = 0xe8;
-        pchMessageStart[2] = 0x3f;
-        pchMessageStart[3] = 0x5f;
+        pchMessageStart[0] = 0xac;
+        pchMessageStart[1] = 0xe6;
+        pchMessageStart[2] = 0x4f;
+        pchMessageStart[3] = 0x8f;
         nDefaultPort = 16490;
         nPruneAfterHeight = 1000;
         const size_t N = 48, K = 5;
