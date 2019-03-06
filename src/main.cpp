@@ -3613,7 +3613,27 @@ bool ContextualCheckBlock(const CBlock& block, CValidationState& state, CBlockIn
             return state.DoS(100, error("%s: block height mismatch in coinbase", __func__), REJECT_INVALID, "bad-cb-height");
         }
     }
+ // Coinbase transaction must include an output sending 3.14159265% of
+    // the block reward to a dev reward script, until the last dev
+    // reward block is reached, with exception of the genesis block.
+    // The last dev reward block is defined as the block just before the
+    // first subsidy halving block, which occurs at halving_interval + slow_start_shift
+    if ((nHeight > 0) && (nHeight <= consensusParams.GetLastFoundersRewardBlockHeight())) {
+        bool found = false;
 
+        BOOST_FOREACH(const CTxOut& output, block.vtx[0].vout) {
+            if (output.scriptPubKey == Params().GetFoundersRewardScriptAtHeight(nHeight)) {
+                if (output.nValue == (GetBlockSubsidy(nHeight, consensusParams) / 47.746482987)) {
+                    found = true;
+                    break;
+                }
+            }
+        }
+
+        if (!found) {
+            return state.DoS(100, error("%s: founders reward missing", __func__), REJECT_INVALID, "cb-no-founders-reward");
+        }
+    }
     return true;
 }
 
