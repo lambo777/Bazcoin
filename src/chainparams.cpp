@@ -137,10 +137,10 @@ public:
         vFixedSeeds.clear();
         vSeeds.clear();
 
-        // guarantees the first 2 characters, when base58 encoded, are "t1"
-        base58Prefixes[PUBKEY_ADDRESS]     = {0x1C,0xB8};
-        // guarantees the first 2 characters, when base58 encoded, are "t3"
-        base58Prefixes[SCRIPT_ADDRESS]     = {0x1C,0xBD};
+        // guarantees the first 2 characters, when base58 encoded, are "b1"
+        base58Prefixes[PUBKEY_ADDRESS]     = {0x13,0x25};
+        // guarantees the first 2 characters, when base58 encoded, are "b3"
+        base58Prefixes[SCRIPT_ADDRESS]     = {0x13,0x2a};
         // the first character, when base58 encoded, is "5" or "K" or "L" (as in Bitcoin)
         base58Prefixes[SECRET_KEY]         = {0x80};
         // do not rely on these BIP32 prefixes; they are not specified and may change
@@ -303,8 +303,8 @@ public:
         //vSeeds.push_back(CDNSSeedData("zclcore.org", "dnsseed.testnet.zclcore.org"));
         //vSeeds.push_back(CDNSSeedData("zcl.community", "dnsseed.testnet.zcl.community"));
 
-        // guarantees the first 2 characters, when base58 encoded, are "tm"
-        base58Prefixes[PUBKEY_ADDRESS]     = {0x1D,0x25};
+        // guarantees the first 2 characters, when base58 encoded, are "bT"
+        base58Prefixes[PUBKEY_ADDRESS]     = {0x13,0x66};
         // guarantees the first 2 characters, when base58 encoded, are "t2"
         base58Prefixes[SCRIPT_ADDRESS]     = {0x1C,0xBA};
         // the first character, when base58 encoded, is "9" or "c" (as in Bitcoin)
