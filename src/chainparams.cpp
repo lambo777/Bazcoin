@@ -50,6 +50,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  *
  * >>> from pyblake2 import blake2s
  * >>> 'Bazcoin' + blake2s(b'j2o aka j62 Show 2019-March-07 The Only hope for True Freedom').hexdigest()
+ 
  * CBlock(hash=00040fe8, ver=4, hashPrevBlock=00000000000000, hashMerkleRoot=c4eaa5, nTime=1477641360, nBits=1f07ffff, nNonce=4695, vtx=1)
  *   CTransaction(hash=c4eaa5, ver=1, vin.size=1, vout.size=1, nLockTime=0)
  *     CTxIn(COutPoint(000000, -1), coinbase 04ffff071f0104455a6361736830623963346565663862376363343137656535303031653335303039383462366665613335363833613763616331343161303433633432303634383335643334)
@@ -59,7 +60,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
 static CBlock CreateGenesisBlock(uint32_t nTime, const uint256& nNonce, const std::vector<unsigned char>& nSolution, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
     const char* pszTimestamp = "Bazcoin796dda88be21b9d9e07454b9fedcb3c31e545a6cc67137eb6cadeba9398e85ea";
-    const CScript genesisOutputScript = CScript() << ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f") << OP_CHECKSIG;
+    const CScript genesisOutputScript = CScript() << ParseHex("04c2aaefe94ee62d8f868559ada27344e4c5433c8781c4e7a324257feb51b7e81ab3591cf2595b3c5e71064f4b0885643a8dd9a2638fd6b64051c7dac0adb98c06") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nSolution, nBits, nVersion, genesisReward);
 }
 
@@ -116,7 +117,7 @@ public:
         pchMessageStart[1] = 0x80;
         pchMessageStart[2] = 0x52;
         pchMessageStart[3] = 0x69;
-        vAlertPubKey = ParseHex("04a60129fc1915c0e35d92328cbc27cba5dc367dd0eaf7059616aa455afc3f7622161572e1197af352baff0d6563bb75316d095241dd94f809d7f6eefb49dbdff4");
+        vAlertPubKey = ParseHex(" 04eadc15130dda758514da41c9aabdbef61dc125324137c62beacdc271495568aefed0e282c6cd466663140354b817e787c1764ff0025c8f48dca03f8d299692de");
         nDefaultPort = 6489;
         nPruneAfterHeight = 100000;
         const size_t N = 200, K = 9;
@@ -279,7 +280,7 @@ public:
         pchMessageStart[1] = 0x1c;
         pchMessageStart[2] = 0x79;
         pchMessageStart[3] = 0xef;
-        vAlertPubKey = ParseHex("044d71d7faa4e6d77c08d3a1e8c27fafc922de9ec8c91e809bb0c4788058301ec18a68d9fe42b6ec0467bb7ca7f7ecaecbc05c0b6437d9de21a59232fd917a8803");
+        vAlertPubKey = ParseHex("04a9dc6bf31fce0734404d1bf2c889a53f5f5a573af50112ce18f5685f6b28d3cf58009f225de395683d87eea54112d05fd41246d7770ff414de39e6a221eadea0");
         nDefaultPort = 16489;
         nPruneAfterHeight = 1000;
         const size_t N = 200, K = 9;
